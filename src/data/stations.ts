@@ -423,6 +423,34 @@ export const battalionInfo = {
   },
 } as const;
 
+export interface TruckCompany {
+  truck: string;
+  station: number;
+  crew: 4 | 5;
+  medical: "ALS" | "BLS";
+  truckType: "Pierce" | "American LaFrance";
+}
+
+export const truckCompanies: TruckCompany[] = [
+  { truck: "T1", station: 1, crew: 5, medical: "BLS", truckType: "Pierce" },
+  { truck: "T2", station: 4, crew: 5, medical: "BLS", truckType: "Pierce" },
+  { truck: "T3", station: 3, crew: 4, medical: "BLS", truckType: "Pierce" },
+  { truck: "T4", station: 15, crew: 5, medical: "ALS", truckType: "American LaFrance" },
+  { truck: "T5", station: 8, crew: 4, medical: "BLS", truckType: "American LaFrance" },
+  { truck: "T6", station: 18, crew: 4, medical: "ALS", truckType: "Pierce" },
+  { truck: "T7", station: 20, crew: 4, medical: "BLS", truckType: "Pierce" },
+];
+
+export const doubleHouses = stations
+  .filter((s) => s.type === "Double")
+  .map((s) => ({
+    station: s.num,
+    addr: s.addr,
+    bn: s.bn,
+    engines: s.engines,
+    trucks: s.trucks,
+  }));
+
 export const departmentLeadership = [
   { title: "Fire Chief", name: "Damon Covington" },
   { title: "Deputy Chief (Operations)", name: "DC Matthew Nichelini" },

@@ -8,6 +8,7 @@ import { BuzzerCommandsCard } from "@/components/quick-ref/BuzzerCommands";
 import { LadderCommandsCard } from "@/components/quick-ref/LadderCommands";
 import { PhoneticAlphabetCard } from "@/components/quick-ref/PhoneticAlphabet";
 import { ExtinguishersCard } from "@/components/quick-ref/Extinguishers";
+import { TruckCompaniesCard } from "@/components/quick-ref/TruckCompanies";
 
 export const metadata = {
   title: "Quick Reference — OFD Handbook",
@@ -35,6 +36,7 @@ export default function QuickRefPage() {
           </div>
 
           <div className="space-y-6">
+            <TruckCompaniesCard />
             <ResponseMatrixCard />
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
               <DispositionCodesCard />
