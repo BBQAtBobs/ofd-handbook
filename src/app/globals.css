@@ -1,26 +1,69 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+  --color-bg: #f0efec;
+  --color-bg-warm: #e8e7e3;
+  --color-bg-card: #f9f8f6;
+  --color-bg-white: #ffffff;
+  --color-bg-subtle: #f4f3f0;
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --color-border: #d9d6d0;
+  --color-border-light: #e2ded8;
+
+  --color-primary: #1a1714;
+  --color-secondary: #5c564e;
+  --color-muted: #9b9389;
+
+  --color-accent: #b8351a;
+  --color-accent-soft: rgba(184, 53, 26, 0.07);
+  --color-accent-softer: rgba(184, 53, 26, 0.04);
+
+  --color-amber: #c97a2e;
+  --color-amber-soft: rgba(201, 122, 46, 0.07);
+
+  --color-blue: #2a6fa8;
+  --color-blue-soft: rgba(42, 111, 168, 0.07);
+
+  --color-green: #2e8b57;
+  --color-green-soft: rgba(46, 139, 87, 0.07);
+
+  --color-bn2: #b8351a;
+  --color-bn3: #c97a2e;
+  --color-bn4: #2a6fa8;
+
+  --font-heading: var(--font-heading);
+  --font-body: var(--font-body);
+  --font-mono: var(--font-mono);
+
+  --radius-default: 10px;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-body), system-ui, sans-serif;
+}
+
+/* Heading utility */
+.heading {
+  font-family: var(--font-heading), system-ui, sans-serif;
+  font-weight: 800;
+  letter-spacing: -0.025em;
+  line-height: 1.1;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-border);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-muted);
 }
