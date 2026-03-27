@@ -139,6 +139,21 @@ export const stations: Station[] = [
     lng: -122.2538,
   },
   {
+    num: 10,
+    addr: "172 Santa Clara Avenue",
+    zip: "95610",
+    bn: 2,
+    engines: ["E10"],
+    trucks: [],
+    rescue: [],
+    special: ["Currently Closed"],
+    type: "Single",
+    notes:
+      "Currently closed for repairs. Station 10 crew is temporarily assigned to Station 12.",
+    lat: 37.7935,
+    lng: -122.2578,
+  },
+  {
     num: 12,
     addr: "822 Alice Street",
     zip: "94607",

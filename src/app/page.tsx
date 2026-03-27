@@ -32,7 +32,7 @@ const entryPoints = [
     title: "Stations",
     subtitle: "Interactive Map",
     description:
-      "All 25 stations with addresses, apparatus, battalion assignments, and an interactive map.",
+      "All 26 stations with addresses, apparatus, battalion assignments, and an interactive map.",
     icon: (
       <svg
         className="w-5 h-5"
@@ -127,7 +127,7 @@ const colorMap: Record<string, { bg: string; text: string; border: string }> = {
 };
 
 const stats = [
-  { value: "25", label: "Stations" },
+  { value: "26", label: "Stations" },
   { value: "3", label: "Battalions" },
   { value: "60+", label: "Hand Tools" },
   { value: "13", label: "Learning Tracks" },

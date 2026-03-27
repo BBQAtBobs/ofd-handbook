@@ -29,7 +29,7 @@ export const learningTracks: LearningTrack[] = [
     title: "Stations & Battalions",
     group: "Fundamentals",
     description:
-      "All 25 stations, their addresses, apparatus, battalion assignments, and key facilities.",
+      "All 26 stations, their addresses, apparatus, battalion assignments, and key facilities.",
     sections: [
       "Station Map & Addresses",
       "Battalion Organization",
