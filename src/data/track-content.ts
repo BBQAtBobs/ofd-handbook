@@ -413,16 +413,18 @@ const trackContentMap: Record<string, () => ContentSection[]> = {
       return {
         id: key,
         title: label,
-        blocks: tools.map(t => ({
-          type: "tool-cards" as const,
-          tools: [{
-            name: t.name,
-            aka: undefined,
-            description: Object.entries(t.specs).map(([k, v]) => `${k}: ${v}`).join(" · "),
-            image: powerToolImages[t.name],
-            category: label,
-          }],
-        })),
+        blocks: [
+          {
+            type: "tool-cards" as const,
+            tools: tools.map(t => ({
+              name: t.name,
+              aka: undefined,
+              description: Object.entries(t.specs).map(([k, v]) => `${k}: ${v}`).join(" · "),
+              image: powerToolImages[t.name],
+              category: label,
+            })),
+          },
+        ],
       };
     }).filter(Boolean) as ContentSection[];
   },
