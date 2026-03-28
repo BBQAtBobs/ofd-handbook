@@ -1,6 +1,5 @@
 import Nav from "@/components/Nav";
-import Footer from "@/components/Footer";
-import StationMap from "@/components/StationMap";
+import StationMapLoader from "@/components/StationMapLoader";
 
 export const metadata = {
   title: "Stations — OFD Handbook",
@@ -13,9 +12,8 @@ export default function StationsPage() {
     <>
       <Nav />
       <main className="flex-1">
-        <StationMap />
+        <StationMapLoader />
       </main>
-      <Footer />
     </>
   );
 }

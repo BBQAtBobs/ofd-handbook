@@ -1,0 +1,542 @@
+[
+  {
+    "itemName": "Halligan Bar",
+    "manufacturer": null,
+    "model": null,
+    "filename": "tools/halligan-bar.jpg",
+    "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/aa/Halligan-Tool.jpg/1280px-Halligan-Tool.jpg",
+    "confidence": "exact",
+    "justification": "Canonical Wikimedia image showing all 3 ends (adze, pick, fork); CC BY-SA 3.0"
+  },
+  {
+    "itemName": "Flat-Head Axe",
+    "manufacturer": "Council Tool",
+    "model": "FE8-32",
+    "filename": "tools/flat-head-axe.jpg",
+    "sourceUrl": "https://counciltool.com/wp-content/uploads/2024/04/80FMS32DGC-head.png",
+    "confidence": "exact",
+    "justification": "Council Tool stamped on head; 8lb forcible entry flathead with marrying slot; manufacturer product page"
+  },
+  {
+    "itemName": "The Irons",
+    "manufacturer": null,
+    "model": null,
+    "filename": "tools/halligan-and-axe.jpg",
+    "sourceUrl": "unknown",
+    "confidence": "probable",
+    "justification": "Prior session image; Halligan bar married to flat-head axe"
+  },
+  {
+    "itemName": "Pike Pole",
+    "manufacturer": null,
+    "model": null,
+    "filename": "tools/pike-pole.jpg",
+    "sourceUrl": "unknown",
+    "confidence": "probable",
+    "justification": "Prior session image; standard fire service pike pole"
+  },
+  {
+    "itemName": "Pulaski",
+    "manufacturer": null,
+    "model": null,
+    "filename": "tools/pulaski.jpg",
+    "sourceUrl": "unknown",
+    "confidence": "probable",
+    "justification": "Prior session image; standard Pulaski wildland tool"
+  },
+  {
+    "itemName": "McLeod",
+    "manufacturer": null,
+    "model": null,
+    "filename": "tools/mcleod.jpg",
+    "sourceUrl": "unknown",
+    "confidence": "probable",
+    "justification": "Prior session image; standard McLeod wildland tool"
+  },
+  {
+    "itemName": "Bolt Cutters",
+    "manufacturer": null,
+    "model": null,
+    "filename": "tools/bolt-cutters.jpg",
+    "sourceUrl": "unknown",
+    "confidence": "probable",
+    "justification": "Prior session image; standard bolt cutters"
+  },
+  {
+    "itemName": "Sledge Hammer",
+    "manufacturer": null,
+    "model": null,
+    "filename": "tools/sledge-hammer.jpg",
+    "sourceUrl": "unknown",
+    "confidence": "probable",
+    "justification": "Prior session image; standard sledge hammer"
+  },
+  {
+    "itemName": "Battering Ram",
+    "manufacturer": null,
+    "model": null,
+    "filename": "tools/battering-ram.jpg",
+    "sourceUrl": "unknown",
+    "confidence": "probable",
+    "justification": "Prior session image; fire service battering ram"
+  },
+  {
+    "itemName": "Crowbar",
+    "manufacturer": null,
+    "model": null,
+    "filename": "tools/crowbar.jpg",
+    "sourceUrl": "unknown",
+    "confidence": "probable",
+    "justification": "Prior session image; standard crowbar/wrecking bar"
+  },
+  {
+    "itemName": "Hydraulic Bottle Jack",
+    "manufacturer": null,
+    "model": null,
+    "filename": "tools/hydraulic-bottle-jack.jpg",
+    "sourceUrl": "unknown",
+    "confidence": "probable",
+    "justification": "Prior session image; standard hydraulic bottle jack"
+  },
+  {
+    "itemName": "Come Along Winch",
+    "manufacturer": null,
+    "model": null,
+    "filename": "tools/come-along-winch.jpg",
+    "sourceUrl": "unknown",
+    "confidence": "probable",
+    "justification": "Prior session image; standard ratcheting cable puller"
+  },
+  {
+    "itemName": "Backpump",
+    "manufacturer": "Smith Indian / The Fountainhead Group",
+    "model": "Indian 90S",
+    "filename": "tools/backpump.jpg",
+    "sourceUrl": "https://www.thefountainheadgroup.com/media/images/0314/90s.jpg",
+    "confidence": "exact",
+    "justification": "SMITH INDIAN FIRE PUMP label visible on stainless steel 5-gal tank; manufacturer product page"
+  },
+  {
+    "itemName": "Rex Tool",
+    "manufacturer": "Fire Hooks Unlimited",
+    "model": "REXT",
+    "filename": "tools/rex-tool.jpg",
+    "sourceUrl": "https://cdn11.bigcommerce.com/s-drvgkd7lpg/images/stencil/1280x1280/products/5882/10103/media__68512.1766181125.png?c=1",
+    "confidence": "exact",
+    "justification": "U-shaped head with tapered blades, chisel end, two key tools visible; TheFireStore authorized dealer"
+  },
+  {
+    "itemName": "Duckbill Lock Breaker",
+    "manufacturer": "Fire Hooks Unlimited",
+    "model": "ULB-1",
+    "filename": "tools/duckbill-lock-breaker.jpg",
+    "sourceUrl": "https://www.heimanfireequipment.com/cdn/shop/products/1520-113.jpg?v=1546446832",
+    "confidence": "exact",
+    "justification": "Correct triangular duckbill head, 18-inch handle with gas shut-off tip; Heiman Fire Equipment dealer"
+  },
+  {
+    "itemName": "Glas-Master",
+    "manufacturer": "Glas-Master",
+    "model": "GLAS-MASTER-2",
+    "filename": "tools/glas-master.jpg",
+    "sourceUrl": "https://cdn11.bigcommerce.com/s-9mdzyjz7r4/images/stencil/1280x1280/products/7705/20264/GLAS-MASTER-2__05230__50593__39335.1765834494.jpg?c=1",
+    "confidence": "exact",
+    "justification": "GLAS MASTER branding visible on yellow body; saw blade, window punch, spike end all visible; FirePenny dealer"
+  },
+  {
+    "itemName": "Cellar Nozzle",
+    "manufacturer": "Elkhart Brass",
+    "model": "193-9 Bresnan",
+    "filename": "tools/cellar-nozzle.jpg",
+    "sourceUrl": "https://fire-end.com/cdn/shop/products/193--9.jpg?v=1680590240",
+    "confidence": "exact",
+    "justification": "Bresnan-pattern distributor with ball-bearing revolving head, multiple variable-angle orifices, 2.5-inch NH coupling; Fire-End dealer"
+  },
+  {
+    "itemName": "Door Spreader",
+    "manufacturer": "Multipick",
+    "model": "Herkules",
+    "filename": "tools/door-spreader.jpg",
+    "sourceUrl": "https://www.pickpals.com.au/wp-content/uploads/2019/11/Door-Spreader-by-Multipick.png",
+    "confidence": "exact",
+    "justification": "Screw-jack mechanical spreader shown in door frame; correct non-hydraulic tool class; PickPals dealer"
+  },
+  {
+    "itemName": "Shove Knife",
+    "manufacturer": "Line2 EMS",
+    "model": "600-04",
+    "filename": "tools/shove-knife.jpg",
+    "sourceUrl": "https://www.line2ems.com/cdn/shop/files/Untitled_design_6_adfbc9ff-7dcc-456b-b7a9-c391205bcae1.png?v=1737978291",
+    "confidence": "exact",
+    "justification": "Thin flexible blade with protective cover; usage inset photos; Line2 EMS fire supplier"
+  },
+  {
+    "itemName": "Rogue Hoe",
+    "manufacturer": "Rogue Hoe",
+    "model": "40X-4",
+    "filename": "tools/rogue-hoe.jpg",
+    "sourceUrl": "https://cascadefire.com/cdn/shop/products/40287.jpg?v=1556551118",
+    "confidence": "exact",
+    "justification": "Black disc blade head on curved hickory handle; full-length white background; Cascade Fire Equipment dealer"
+  },
+  {
+    "itemName": "Pick-Head Axe",
+    "manufacturer": "Council Tool",
+    "model": "C60P-36",
+    "filename": "tools/pick-head-axe.jpg",
+    "sourceUrl": "https://cdn11.bigcommerce.com/s-drvgkd7lpg/images/stencil/1280x1280/products/1685/3324/media__27777.1727119630.png?c=1",
+    "confidence": "exact",
+    "justification": "Red-painted pick-head fire axe with fiberglass handle; pick point clearly visible opposite cutting edge; TheFireStore/Council Tool"
+  },
+  {
+    "itemName": "Roof Hook",
+    "manufacturer": "Fire Hooks Unlimited",
+    "model": "W-RH",
+    "filename": "tools/roof-hook.jpg",
+    "sourceUrl": "https://cdn11.bigcommerce.com/s-drvgkd7lpg/images/stencil/1280x1280/products/18394/41851/502849__18696.1757692705.png?c=1",
+    "confidence": "exact",
+    "justification": "Two-panel showing Z-shaped hook head and chisel end; FHU New York Roof Hook; TheFireStore dealer"
+  },
+  {
+    "itemName": "Hayward Hook",
+    "manufacturer": "Malven Fire Tool Works",
+    "model": "MW Entry Hayward Claw",
+    "filename": "tools/hayward-hook.jpg",
+    "sourceUrl": "https://i0.wp.com/malvenworks.wpcomstaging.com/wp-content/uploads/2022/12/AGE-CAT.-MW-ENTRY-22HAYWARD22-CLAW.png?ssl=1",
+    "confidence": "exact",
+    "justification": "Malven Hayward Claw Tool text overlay; shows curved claw/hook end with Cully lugs; sole current manufacturer's own product image"
+  },
+  {
+    "itemName": "Pipe Wrench",
+    "manufacturer": "Ridgid",
+    "model": "31030 (24-inch)",
+    "filename": "tools/pipe-wrench.jpg",
+    "sourceUrl": "https://hausoftools.com/cdn/shop/files/31030_24_HD_Straight_Pipe_Wrench_USA_Side_Left_1.jpg?v=1731604710",
+    "confidence": "exact",
+    "justification": "RIDGID and USA stamped on red I-beam handle; serrated teeth, hook jaw clearly visible; Haus of Tools authorized dealer"
+  },
+  {
+    "itemName": "Vise Grips",
+    "manufacturer": "Irwin Tools",
+    "model": "902L3 (Original Curved Jaw)",
+    "filename": "tools/vise-grips.jpg",
+    "sourceUrl": "https://www.irwintools.com/NAG/PRODUCT/IMAGES/HIRES/Ecomm_Large-902L3_2.jpg",
+    "confidence": "exact",
+    "justification": "IRWIN and VISE GRIP branding visible; classic curved jaw with screw-adjust bolt and lever release; manufacturer product page"
+  },
+  {
+    "itemName": "Hacksaw",
+    "manufacturer": "Milwaukee Tool",
+    "model": "48-22-0050 (12-inch High Tension)",
+    "filename": "tools/hacksaw.jpg",
+    "sourceUrl": "https://www.milwaukeetool.com/--/web-images/sc/ae6fe1a9b9674efe90620fdfb0bf87fa",
+    "confidence": "exact",
+    "justification": "Milwaukee branding visible; 12-inch high tension frame with blade under tension; manufacturer product page"
+  },
+  {
+    "itemName": "Pick Mall",
+    "manufacturer": "Ames / Razor-Back",
+    "model": "4118000 (#5 Pick Mattock)",
+    "filename": "tools/pick-mall.jpg",
+    "sourceUrl": "https://www.homebyames.com/on/demandware.static/-/Sites-root_b2c_closetmaid_catalog/default/dwda8c1dab/images/4118000/4118000_full.jpg",
+    "confidence": "exact",
+    "justification": "RAZORBACK and PICK MATTOCK labels visible; pick point on one side, mattock/adze blade on other; manufacturer product page"
+  },
+  {
+    "itemName": "Pry Bar",
+    "manufacturer": "Council Tool",
+    "model": "180PP (60-inch Pinch Point Crowbar)",
+    "filename": "tools/pry-bar.jpg",
+    "sourceUrl": "https://counciltool.com/wp-content/uploads/2015/12/180pp.jpg",
+    "confidence": "exact",
+    "justification": "Long straight black steel bar with tapered pinch point; listed under Council Tool firefighting category; manufacturer product page"
+  },
+  {
+    "itemName": "Rubbish Hook",
+    "manufacturer": "Fire Hooks Unlimited",
+    "model": "TRH (Arson-Trash Hook)",
+    "filename": "tools/rubbish-hook.jpg",
+    "sourceUrl": "https://www.allhandsfire.com/product-images/FHU-TRH_1.jpg",
+    "confidence": "exact",
+    "justification": "FHU Arson Trash Hook with D-handle; triangular hook head for debris search; AllHandsFire dealer (FHU-TRH SKU)"
+  },
+  {
+    "itemName": "Scissor Jack",
+    "manufacturer": "Pro-Lift",
+    "model": "T-9456 (3000 lb)",
+    "filename": "tools/scissor-jack.jpg",
+    "sourceUrl": "https://goprolift.com/cdn/shop/products/grey-scissor-jack-3000-lb-capacity-489900.jpg?v=1762470220&width=1500",
+    "confidence": "exact",
+    "justification": "Grey diamond-shape scissor jack with handle wrench; standard mechanical screw-thread jack; Pro-Lift manufacturer site"
+  },
+  {
+    "itemName": "Adjustable Pliers / Channel Locks",
+    "manufacturer": "Channellock Inc.",
+    "model": "430 (10-inch Straight Jaw)",
+    "filename": "tools/channel-locks.jpg",
+    "sourceUrl": "https://images.salsify.com/image/upload/s--pecC8jCD--/w_600/isajsk4z2fynrdsdk3ay.webp",
+    "confidence": "exact",
+    "justification": "CHANNELLOCK 430 MADE IN U.S.A. stamped on body; iconic blue handles; manufacturer product page via Salsify CDN"
+  },
+  {
+    "itemName": "Adjustable / Crescent Wrench",
+    "manufacturer": "Crescent (Apex Tool Group)",
+    "model": "ATWJ210VS (10-inch Wide Jaw)",
+    "filename": "tools/crescent-wrench.jpg",
+    "sourceUrl": "https://www.crescenttool.com/sites/crescenttool/files/styles/product_medium/public/pim_images/CRS_ATWJ210VS_MAIN.jpg",
+    "confidence": "exact",
+    "justification": "CRESCENT branding visible on handle; 10-inch adjustable wrench; manufacturer product page"
+  },
+  {
+    "itemName": "Sprinkler Head Wrench",
+    "manufacturer": "FireHoseDirect",
+    "model": "FSHWB",
+    "filename": "tools/sprinkler-wrench.jpg",
+    "sourceUrl": "https://firehosedirect.com/cdn/shop/files/137184.jpg?v=1753125366",
+    "confidence": "exact",
+    "justification": "Fire sprinkler head box wrench with blue dipped handle; fire equipment dealer product page"
+  },
+  {
+    "itemName": "Gate Valve Shut Off",
+    "manufacturer": "HydroVerge",
+    "model": "Telescopic Gate Valve Key",
+    "filename": "tools/gate-valve-key.jpg",
+    "sourceUrl": "https://hydroverge.com/cdn/shop/products/HydroVerge_Gate_Valve_Key_Long_001_600x.jpg?v=1681759507",
+    "confidence": "exact",
+    "justification": "Red telescoping T-handle gate valve key for water mains; manufacturer product page"
+  },
+  {
+    "itemName": "Wildland Round Point Shovel",
+    "manufacturer": "Council Tool",
+    "model": "FFSHOSS38FSS (Forest Fire Shovel)",
+    "filename": "tools/wildland-shovel.jpg",
+    "sourceUrl": "https://counciltool.com/wp-content/uploads/2015/12/ffsh0ss388fss.jpg",
+    "confidence": "exact",
+    "justification": "Council Tool forest fire shovel with sharpened round-point head and 38-inch handle; manufacturer wildland firefighting category"
+  },
+  {
+    "itemName": "Ball-Peen Hammer",
+    "manufacturer": null,
+    "model": null,
+    "filename": "tools/ball-peen-hammer.jpg",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Ball-peen_hammer_380mm.jpg",
+    "confidence": "exact",
+    "justification": "Classic ball-peen hammer with round peen head; Wikimedia Commons"
+  },
+  {
+    "itemName": "Claw Hammer",
+    "manufacturer": null,
+    "model": null,
+    "filename": "tools/claw-hammer.jpg",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Claw-hammer.jpg",
+    "confidence": "exact",
+    "justification": "Standard claw hammer; Wikimedia Commons"
+  },
+  {
+    "itemName": "Rubber Mallet",
+    "manufacturer": null,
+    "model": null,
+    "filename": "tools/rubber-mallet.jpg",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Rubber_mallet.jpg",
+    "confidence": "exact",
+    "justification": "Rubber mallet with wooden handle; Wikimedia Commons"
+  },
+  {
+    "itemName": "Utility Knife",
+    "manufacturer": null,
+    "model": null,
+    "filename": "tools/utility-knife.jpg",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Utility-knife.jpg",
+    "confidence": "exact",
+    "justification": "Retractable utility knife; Wikimedia Commons"
+  },
+  {
+    "itemName": "Combination Wrench",
+    "manufacturer": null,
+    "model": null,
+    "filename": "tools/combination-wrench.jpg",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Combination_wrench.jpg",
+    "confidence": "exact",
+    "justification": "Open-end / box-end combination wrench; Wikimedia Commons"
+  },
+  {
+    "itemName": "Sheet Metal Cutters",
+    "manufacturer": null,
+    "model": null,
+    "filename": "tools/sheet-metal-cutters.jpg",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Tin_snips.jpg",
+    "confidence": "exact",
+    "justification": "Aviation tin snips / sheet metal cutters; Wikimedia Commons"
+  },
+  {
+    "itemName": "Cable Cutters",
+    "manufacturer": null,
+    "model": null,
+    "filename": "tools/cable-cutters.jpg",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Cable_cutter.jpg",
+    "confidence": "exact",
+    "justification": "Heavy-duty cable cutters; Wikimedia Commons"
+  },
+  {
+    "itemName": "Allen Wrench",
+    "manufacturer": "REXBETI",
+    "model": "Hex Key Set (SAE/Metric/Torx)",
+    "filename": "tools/allen-wrench.jpg",
+    "sourceUrl": "https://rexbetitools.com/cdn/shop/products/REXBETIHexKeyAllenWrenchSet_1024x1024.jpg",
+    "confidence": "exact",
+    "justification": "L-shaped hex key set with SAE, Metric, and Torx sizes; REXBETI Tools product page"
+  },
+  {
+    "itemName": "Monkey Wrench",
+    "manufacturer": "DEEN",
+    "model": "Monkey Wrench 150-300mm",
+    "filename": "tools/monkey-wrench.jpg",
+    "sourceUrl": "https://daitool.com/cdn/shop/files/P-1-DEEN-MNKWRE-Deen_Monkey_Wrench_Japanese_Adjustable_Spanner_150mm-300mm.jpg",
+    "confidence": "probable",
+    "justification": "Smooth flat-jaw adjustable wrench (not serrated pipe wrench); DEEN Japan via Daitool"
+  },
+  {
+    "itemName": "Blacksmith Hammer",
+    "manufacturer": "Picard",
+    "model": "1001-0900 Cross Peen",
+    "filename": "tools/blacksmith-hammer.jpg",
+    "sourceUrl": "https://blacksmithsource.com/cdn/shop/products/1001-0900_cross_peen.jpg",
+    "confidence": "exact",
+    "justification": "Cross peen blacksmith hammer; Blacksmith Source Tool Company (Picard)"
+  },
+  {
+    "itemName": "Carpet Knife",
+    "manufacturer": "Bon Tool",
+    "model": "78-217",
+    "filename": "tools/carpet-knife.jpg",
+    "sourceUrl": "https://bontoolcom-2.azureedge.net/img/product/78-217-B.jpg",
+    "confidence": "exact",
+    "justification": "Hook-handle razor carpet knife; Bon Tool manufacturer page"
+  },
+  {
+    "itemName": "Strap Wrench",
+    "manufacturer": "SEDY",
+    "model": "Rubber Strap Wrench Set",
+    "filename": "tools/strap-wrench.jpg",
+    "sourceUrl": "https://sedyonline.com/cdn/shop/products/57_aa1016f5-9a2a-44cd-b00b-563ff91ffffe.jpg",
+    "confidence": "probable",
+    "justification": "Rubber strap wrench for pipes; SEDY Tools product page"
+  },
+  {
+    "itemName": "Gad",
+    "manufacturer": "Estwing",
+    "model": "GP-18 Gad Pry Bar",
+    "filename": "tools/gad.jpg",
+    "sourceUrl": "https://www.ascscientific.com/cdn/shop/products/GP-18-Geo-Gad-Pry-Bar_1024x1024.jpg",
+    "confidence": "probable",
+    "justification": "Estwing GP18 gad point pry bar; closest commercial match to fire service gad; ASC Scientific dealer"
+  },
+  {
+    "itemName": "Fuse Puller",
+    "manufacturer": "Ideal Industries",
+    "model": "34-002 Safe-T-Grip",
+    "filename": "tools/fuse-puller.jpg",
+    "sourceUrl": "https://media.distributordatasolutions.com/ideal/2020q3/images/large/6f135e55cc77fafd006ed3d2aa37077dc48a6e0a-large.png",
+    "confidence": "exact",
+    "justification": "Ideal Safe-T-Grip insulated fuse puller; Capital Electric Supply dealer"
+  },
+  {
+    "itemName": "Needle Nose Plier",
+    "manufacturer": null,
+    "model": null,
+    "filename": "tools/needle-nose-plier.jpg",
+    "sourceUrl": "unknown",
+    "confidence": "probable",
+    "justification": "Standard needle nose pliers; Tier 2 batch acquisition"
+  },
+  {
+    "itemName": "Lineman Plier",
+    "manufacturer": null,
+    "model": null,
+    "filename": "tools/lineman-plier.jpg",
+    "sourceUrl": "unknown",
+    "confidence": "probable",
+    "justification": "Standard lineman pliers; Tier 2 batch acquisition"
+  },
+  {
+    "itemName": "Diagonal Cutter",
+    "manufacturer": null,
+    "model": null,
+    "filename": "tools/diagonal-cutter.jpg",
+    "sourceUrl": "unknown",
+    "confidence": "probable",
+    "justification": "Standard diagonal cutting pliers; Tier 2 batch acquisition"
+  },
+  {
+    "itemName": "Pliers",
+    "manufacturer": null,
+    "model": null,
+    "filename": "tools/pliers.jpg",
+    "sourceUrl": "unknown",
+    "confidence": "probable",
+    "justification": "Standard slip-joint pliers; Tier 2 batch acquisition"
+  },
+  {
+    "itemName": "Flat-Head Shovel",
+    "manufacturer": null,
+    "model": null,
+    "filename": "tools/flat-head-shovel.jpg",
+    "sourceUrl": "unknown",
+    "confidence": "probable",
+    "justification": "Standard flat-head shovel; Tier 2 batch acquisition"
+  },
+  {
+    "itemName": "Scoop Shovel",
+    "manufacturer": null,
+    "model": null,
+    "filename": "tools/scoop-shovel.jpg",
+    "sourceUrl": "unknown",
+    "confidence": "probable",
+    "justification": "Standard scoop shovel; Tier 2 batch acquisition"
+  },
+  {
+    "itemName": "Pitch Fork",
+    "manufacturer": null,
+    "model": null,
+    "filename": "tools/pitch-fork.jpg",
+    "sourceUrl": "unknown",
+    "confidence": "probable",
+    "justification": "Standard pitch fork; Tier 2 batch acquisition"
+  },
+  {
+    "itemName": "Staple Gun",
+    "manufacturer": null,
+    "model": null,
+    "filename": "tools/staple-gun.jpg",
+    "sourceUrl": "unknown",
+    "confidence": "probable",
+    "justification": "Standard manual staple gun; Tier 2 batch acquisition"
+  },
+  {
+    "itemName": "Hammer Tacker",
+    "manufacturer": null,
+    "model": null,
+    "filename": "tools/hammer-tacker.jpg",
+    "sourceUrl": "unknown",
+    "confidence": "probable",
+    "justification": "Hammer-style staple tacker; Tier 2 batch acquisition"
+  },
+  {
+    "itemName": "Floor Squeegee",
+    "manufacturer": null,
+    "model": null,
+    "filename": "tools/floor-squeegee.jpg",
+    "sourceUrl": "unknown",
+    "confidence": "probable",
+    "justification": "Standard floor squeegee; Tier 2 batch acquisition"
+  },
+  {
+    "itemName": "Johnson Bar",
+    "manufacturer": null,
+    "model": null,
+    "filename": "tools/johnson-bar.jpg",
+    "sourceUrl": "unknown",
+    "confidence": "probable",
+    "justification": "Pry/lever bar (Johnson bar); Tier 2 batch acquisition"
+  }
+]

@@ -25,6 +25,8 @@ export default function Search() {
   const [query, setQuery] = useState("");
   const [selectedIndex, setSelectedIndex] = useState(0);
   const inputRef = useRef<HTMLInputElement>(null);
+  const dialogRef = useRef<HTMLDivElement>(null);
+  const triggerRef = useRef<HTMLButtonElement>(null);
   const router = useRouter();
 
   const index = useMemo(() => buildSearchIndex(), []);
@@ -48,6 +50,12 @@ export default function Search() {
     return fuse.search(query).slice(0, 12);
   }, [fuse, query]);
 
+  const closeModal = useCallback(() => {
+    setOpen(false);
+    setQuery("");
+    triggerRef.current?.focus();
+  }, []);
+
   const navigate = useCallback(
     (item: SearchItem) => {
       events.searchPerformed(query, results.length);
@@ -66,19 +74,45 @@ export default function Search() {
         setOpen(true);
       }
       if (e.key === "Escape") {
-        setOpen(false);
-        setQuery("");
+        closeModal();
       }
     };
     window.addEventListener("keydown", handler);
     return () => window.removeEventListener("keydown", handler);
-  }, []);
+  }, [closeModal]);
 
   // Focus input when opened
   useEffect(() => {
     if (open) {
       setTimeout(() => inputRef.current?.focus(), 50);
     }
+  }, [open]);
+
+  // Trap focus inside modal when open
+  useEffect(() => {
+    if (!open) return;
+    const dialog = dialogRef.current;
+    if (!dialog) return;
+
+    const handleTab = (e: KeyboardEvent) => {
+      if (e.key !== "Tab") return;
+      const focusable = dialog.querySelectorAll<HTMLElement>(
+        'input, button, [tabindex]:not([tabindex="-1"])'
+      );
+      if (focusable.length === 0) return;
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault();
+        first.focus();
+      }
+    };
+
+    document.addEventListener("keydown", handleTab);
+    return () => document.removeEventListener("keydown", handleTab);
   }, [open]);
 
   // Arrow key navigation
@@ -102,6 +136,7 @@ export default function Search() {
     <>
       {/* Trigger button */}
       <button
+        ref={triggerRef}
         onClick={() => setOpen(true)}
         className="flex items-center gap-2 px-3 py-1.5 rounded-lg border border-border-light bg-bg-white text-sm text-muted hover:border-border hover:text-secondary transition-colors"
       >
@@ -128,12 +163,13 @@ export default function Search() {
       {open && (
         <div
           className="fixed inset-0 z-[100] bg-primary/30 backdrop-blur-sm flex items-start justify-center pt-[15vh]"
-          onClick={() => {
-            setOpen(false);
-            setQuery("");
-          }}
+          onClick={closeModal}
         >
           <div
+            ref={dialogRef}
+            role="dialog"
+            aria-modal="true"
+            aria-label="Search the handbook"
             className="w-full max-w-lg mx-4 bg-bg-white rounded-xl shadow-2xl border border-border overflow-hidden"
             onClick={(e) => e.stopPropagation()}
           >

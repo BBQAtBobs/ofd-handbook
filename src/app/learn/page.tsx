@@ -77,7 +77,7 @@ export default function LearnPage() {
                     {group.name}
                   </h2>
                   <span className="text-xs text-muted">
-                    {tracks.length} tracks
+                    {tracks.length} {tracks.length === 1 ? "track" : "tracks"}
                   </span>
                 </div>
 

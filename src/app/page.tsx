@@ -2,6 +2,9 @@ import Link from "next/link";
 import Image from "next/image";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
+import { stations } from "@/data/stations";
+import { handTools } from "@/data/hand-tools";
+import { learningTracks } from "@/data/learning-tracks";
 
 const entryPoints = [
   {
@@ -127,10 +130,10 @@ const colorMap: Record<string, { bg: string; text: string; border: string }> = {
 };
 
 const stats = [
-  { value: "26", label: "Stations" },
+  { value: String(stations.length), label: "Stations" },
   { value: "3", label: "Battalions" },
-  { value: "60+", label: "Hand Tools" },
-  { value: "13", label: "Learning Tracks" },
+  { value: String(handTools.length), label: "Hand Tools" },
+  { value: String(learningTracks.length), label: "Learning Tracks" },
 ];
 
 export default function Home() {

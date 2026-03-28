@@ -214,7 +214,7 @@ export const learningTracks: LearningTrack[] = [
       "Clove Hitch",
       "Double Becket",
     ],
-    color: "green",
+    color: "amber",
   },
 ];
 

@@ -2,7 +2,28 @@ export interface PowerTool {
   name: string;
   category: "ventilation" | "cutting" | "hydraulic" | "generator";
   specs: Record<string, string>;
+  image?: string;
 }
+
+export const powerToolImages: Record<string, string> = {
+  "Tempest BD 18-H-5.5": "/images/power-tools/tempest-fan.jpg",
+  "Tempest BD 24-H-6.5": "/images/power-tools/tempest-fan.jpg",
+  "BATfan 45": "/images/power-tools/batfan-45.jpg",
+  "Partner K960 Rescue (Husqvarna)": "/images/power-tools/partner-k960.jpg",
+  "Partner K650": "/images/power-tools/partner-k960.jpg",
+  "Partner K950": "/images/power-tools/partner-k960.jpg",
+  "K 970 Ring": "/images/power-tools/k970-ring.jpg",
+  "STIHL TS 800": "/images/power-tools/stihl-ts800.jpg",
+  "Hurst Spreaders": "/images/power-tools/hurst-spreader.jpg",
+  "Hurst Cutter": "/images/power-tools/hurst-cutter.jpg",
+  "Hurst Ram": "/images/power-tools/hurst-ram.jpg",
+  "Honda 3000 Generator": "/images/power-tools/honda-generator.jpg",
+  "Stihl Chainsaw (044, 440, 441, MS460, MS 500i)": "/images/power-tools/stihl-chainsaw.jpg",
+  "Stihl Small Chainsaw (MS200T)": "/images/power-tools/stihl-ms200t.jpg",
+  "Type III Chainsaw (MS261)": "/images/power-tools/stihl-ms261.jpg",
+  "Hurst Tool Power Unit": "/images/power-tools/hurst-power-unit.jpg",
+  'Battery Hurst "Combi Tool" (SC357 E2)': "/images/power-tools/hurst-combi-tool.jpg",
+};
 
 export const powerTools: PowerTool[] = [
   {
