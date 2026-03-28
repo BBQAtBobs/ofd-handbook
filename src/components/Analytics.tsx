@@ -19,6 +19,15 @@ function PostHogInit({ children }: { children: React.ReactNode }) {
         capture_pageleave: true,
         persistence: "localStorage",
       });
+
+      // Allow opt-out via ?ph_optout and opt back in via ?ph_optin
+      const params = new URLSearchParams(window.location.search);
+      if (params.has("ph_optout")) {
+        posthog.opt_out_capturing();
+      } else if (params.has("ph_optin")) {
+        posthog.opt_in_capturing();
+      }
+
       setReady(true);
     }
   }, []);
