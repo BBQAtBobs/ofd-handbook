@@ -1,6 +1,7 @@
 import { stations, truckCompanies } from "@/data/stations";
 import { truckToolColors, truckCrewSizes } from "@/data/ladders";
 import { handTools, handToolImages } from "@/data/hand-tools";
+import { studyTips } from "@/data/study-tips";
 
 // ─── Types ───────────────────────────────────────────────────────────
 
@@ -16,6 +17,7 @@ export interface Question {
   wrongAnswers: string[];
   trackSlug?: string;
   image?: string;
+  tip?: string;
 }
 
 export interface SessionResult {
@@ -336,6 +338,11 @@ export function generateQuestions(opts?: {
   // Filter by track if specified
   if (opts?.trackSlug) {
     pool = pool.filter((q) => q.trackSlug === opts.trackSlug);
+  }
+
+  // Attach tips
+  for (const q of pool) {
+    if (studyTips[q.id]) q.tip = studyTips[q.id];
   }
 
   // Shuffle
