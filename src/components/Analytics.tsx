@@ -9,8 +9,8 @@ function PostHogInit({ children }: { children: React.ReactNode }) {
   const [ready, setReady] = useState(false);
 
   useEffect(() => {
-    const key = process.env.NEXT_PUBLIC_POSTHOG_KEY;
-    const host = process.env.NEXT_PUBLIC_POSTHOG_HOST;
+    const key = process.env.NEXT_PUBLIC_POSTHOG_KEY?.trim();
+    const host = process.env.NEXT_PUBLIC_POSTHOG_HOST?.trim();
     if (key) {
       posthog.init(key, {
         api_host: host || "https://us.i.posthog.com",
