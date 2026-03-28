@@ -13,7 +13,8 @@ function PostHogInit({ children }: { children: React.ReactNode }) {
     const host = process.env.NEXT_PUBLIC_POSTHOG_HOST?.trim();
     if (key) {
       posthog.init(key, {
-        api_host: host || "https://us.i.posthog.com",
+        api_host: "/ingest",
+        ui_host: "https://us.posthog.com",
         capture_pageview: true,
         capture_pageleave: true,
         persistence: "localStorage",
