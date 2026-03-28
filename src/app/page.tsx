@@ -82,11 +82,11 @@ const entryPoints = [
     color: "amber",
   },
   {
-    href: "/equipment",
-    title: "Equipment",
-    subtitle: "Tools & Apparatus",
+    href: "/study",
+    title: "Study",
+    subtitle: "Test Yourself",
     description:
-      "Hand tools, power tools, hose complement, SCBA, and ladder operations — searchable and categorized.",
+      "Flashcards and multiple choice quizzes for stations, trucks, and tools. Drill until you know it cold.",
     icon: (
       <svg
         className="w-5 h-5"
@@ -98,7 +98,7 @@ const entryPoints = [
         <path
           strokeLinecap="round"
           strokeLinejoin="round"
-          d="M11.42 15.17l-5.1-5.1a3.12 3.12 0 114.41-4.41l5.1 5.1a3.12 3.12 0 01-4.41 4.41zM21.13 2.87a3 3 0 00-4.24 0l-2.12 2.12 4.24 4.24 2.12-2.12a3 3 0 000-4.24z"
+          d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
         />
       </svg>
     ),

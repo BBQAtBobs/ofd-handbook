@@ -1,5 +1,6 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
+import Image from "next/image";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import TrackPageLayout from "@/components/TrackPageLayout";
@@ -167,6 +168,53 @@ function renderBlock(block: ContentBlock, j: number, hex: string) {
     );
   }
 
+  if (block.type === "tool-cards" && block.tools) {
+    return (
+      <div
+        key={j}
+        className="grid grid-cols-1 sm:grid-cols-2 gap-3"
+      >
+        {block.tools.map((tool, k) => (
+          <div
+            key={k}
+            className="rounded-lg bg-bg-card border border-border-light overflow-hidden hover:border-border hover:shadow-sm transition-all"
+          >
+            {tool.image ? (
+              <div className="relative w-full h-36 bg-bg-subtle">
+                <Image
+                  src={tool.image}
+                  alt={tool.name}
+                  fill
+                  className="object-contain p-3"
+                  sizes="(max-width: 640px) 100vw, 50vw"
+                />
+              </div>
+            ) : null}
+            <div className="flex items-start gap-0">
+              <div
+                className="w-1 self-stretch shrink-0"
+                style={{ backgroundColor: hex }}
+              />
+              <div className="p-3 flex-1 min-w-0">
+                <div className="font-heading font-bold text-xs text-primary mb-0.5">
+                  {tool.name}
+                </div>
+                {tool.aka && (
+                  <div className="text-[11px] text-muted mb-1">
+                    aka {tool.aka}
+                  </div>
+                )}
+                <div className="text-xs text-secondary leading-relaxed">
+                  {tool.description}
+                </div>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    );
+  }
+
   return null;
 }
 
@@ -207,8 +255,6 @@ export default async function TrackPage({
             >
               Learn
             </Link>
-            <span className="opacity-40">/</span>
-            <span style={{ color: hex }}>{track.group}</span>
             <span className="opacity-40">/</span>
             <span className="text-secondary">{track.title}</span>
           </div>

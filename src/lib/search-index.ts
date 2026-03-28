@@ -39,7 +39,7 @@ export function buildSearchIndex(): SearchItem[] {
       title: t.name,
       description: t.description.slice(0, 120) + (t.description.length > 120 ? "..." : ""),
       category: "Hand Tool",
-      href: "/equipment",
+      href: "/learn/hand-tools",
       tags: `${t.aka || ""} ${t.category} ${t.description}`,
     });
   });
@@ -51,7 +51,7 @@ export function buildSearchIndex(): SearchItem[] {
       title: t.name,
       description: Object.entries(t.specs).slice(0, 3).map(([k, v]) => `${k}: ${v}`).join(" · "),
       category: "Power Tool",
-      href: "/equipment",
+      href: "/learn/power-tools",
       tags: `${t.category} ${Object.values(t.specs).join(" ")}`,
     });
   });

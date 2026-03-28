@@ -7,17 +7,26 @@ import { radioChannels, apx7000Instructions, bendixKingInstructions } from "./ra
 import { dispositionCodes, radioTrafficExample } from "./disposition-codes";
 import { preconnects, rearHoseBed, standpipeBundles, hoseTerminology, hydrantCommands, buzzerCommands, sendingEngine, elkhartRamXD } from "./hose";
 import { ladderTypes, ladderSizes, ladderFacts, truckToolColors, truckCrewSizes, ladderTerminology, ladderCommands } from "./ladders";
-import { handTools, toolCategories, hydrantBucket, highriseBag, sprinklerBox, wildlandFittingBag, tags } from "./hand-tools";
-import { powerTools, powerToolCategories } from "./power-tools";
+import { handTools, handToolImages, toolCategories, hydrantBucket, highriseBag, sprinklerBox, wildlandFittingBag, tags } from "./hand-tools";
+import { powerTools, powerToolImages, powerToolCategories } from "./power-tools";
 import { hydrantBodyColors, hydrantTopColors, hydrantCapColors, hydrantFacts, gatePotCovers, extinguishers } from "./hydrants";
 
+export interface ToolCardItem {
+  name: string;
+  aka?: string;
+  description: string;
+  image?: string;
+  category?: string;
+}
+
 export interface ContentBlock {
-  type: "text" | "list" | "definition" | "table" | "callout";
+  type: "text" | "list" | "definition" | "table" | "callout" | "tool-cards";
   content?: string;
   items?: string[];
   definitions?: [string, string][];
   headers?: string[];
   rows?: string[][];
+  tools?: ToolCardItem[];
 }
 
 export interface ContentSection {
@@ -381,7 +390,16 @@ const trackContentMap: Record<string, () => ContentSection[]> = {
         id: key,
         title: label,
         blocks: [
-          { type: "definition" as const, definitions: tools.map(t => [t.name + (t.aka ? ` (${t.aka})` : ""), t.description] as [string, string]) },
+          {
+            type: "tool-cards" as const,
+            tools: tools.map(t => ({
+              name: t.name,
+              aka: t.aka,
+              description: t.description,
+              image: handToolImages[t.name],
+              category: label,
+            })),
+          },
         ],
       };
     }).filter(Boolean) as ContentSection[];
@@ -396,9 +414,14 @@ const trackContentMap: Record<string, () => ContentSection[]> = {
         id: key,
         title: label,
         blocks: tools.map(t => ({
-          type: "table" as const,
-          headers: ["Spec", "Value"],
-          rows: [["\u200B" + t.name, ""], ...Object.entries(t.specs)],
+          type: "tool-cards" as const,
+          tools: [{
+            name: t.name,
+            aka: undefined,
+            description: Object.entries(t.specs).map(([k, v]) => `${k}: ${v}`).join(" · "),
+            image: powerToolImages[t.name],
+            category: label,
+          }],
         })),
       };
     }).filter(Boolean) as ContentSection[];

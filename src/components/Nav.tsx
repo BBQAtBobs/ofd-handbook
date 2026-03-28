@@ -9,7 +9,6 @@ const navLinks = [
   { href: "/learn", label: "Learn" },
   { href: "/stations", label: "Stations" },
   { href: "/quick-ref", label: "Quick Ref" },
-  { href: "/equipment", label: "Equipment" },
   { href: "/study", label: "Study" },
 ];
 
