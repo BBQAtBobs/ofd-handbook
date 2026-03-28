@@ -60,12 +60,27 @@ function truckToFull(t: string): string {
   return `Truck ${t.replace("T", "")}`;
 }
 
+function toTitleCase(s: string): string {
+  return s
+    .toLowerCase()
+    .split(" ")
+    .map((w, i) =>
+      i > 0 && w === "and" ? w : w.charAt(0).toUpperCase() + w.slice(1)
+    )
+    .join(" ");
+}
+
 // ─── Question Generators ─────────────────────────────────────────────
 
 function generateStationQuestions(): Question[] {
   const questions: Question[] = [];
   const addrPool = stations.map((s) => s.addr);
   const bnPool = ["Battalion 2", "Battalion 3", "Battalion 4"];
+
+  const doubleHouseNums = stations
+    .filter((s) => s.type === "Double")
+    .map((s) => s.num);
+  const doubleHouseStrs = doubleHouseNums.map((n) => `Station ${n}`);
 
   for (const s of stations) {
     // Address question
@@ -87,16 +102,33 @@ function generateStationQuestions(): Question[] {
       wrongAnswers: pickDistractors(bnPool, `Battalion ${s.bn}`),
       trackSlug: "stations-battalions",
     });
+  }
 
-    // House type question
+  // Double house questions (replace 26 individual house-type questions with targeted ones)
+  for (const s of stations.filter((s) => s.type === "Double")) {
     questions.push({
-      id: `stations-type-${s.num}`,
+      id: `stations-double-${s.num}`,
       category: "stations",
-      question: `What type of house is Station ${s.num}?`,
-      answer: `${s.type} House`,
+      question: `Is Station ${s.num} a double house?`,
+      answer: "Yes",
+      wrongAnswers: ["No"],
+      trackSlug: "stations-battalions",
+    });
+  }
+
+  // "Which of these is a double house?" for a few single-house stations
+  const singleStations = stations.filter((s) => s.type === "Single");
+  for (let i = 0; i < 3 && i < singleStations.length; i++) {
+    const s = singleStations[i];
+    const correctDouble = doubleHouseNums[i % doubleHouseNums.length];
+    questions.push({
+      id: `stations-which-double-${i}`,
+      category: "stations",
+      question: "Which of these is a double house?",
+      answer: `Station ${correctDouble}`,
       wrongAnswers: pickDistractors(
-        ["Single House", "Double House", "Triple House"],
-        `${s.type} House`
+        singleStations.map((ss) => `Station ${ss.num}`),
+        `Station ${correctDouble}`
       ),
       trackSlug: "stations-battalions",
     });
@@ -114,6 +146,11 @@ function generateStationQuestions(): Question[] {
 
   for (const s of specialStations) {
     const mainSpecial = s.special[0];
+
+    // Skip Type III Wildland for Station 7 — Station 17 also has it, making
+    // the single-answer format ambiguous. Station 17 covers it via "Bn 4 HQ".
+    if (mainSpecial === "Type III Wildland" && s.num === 7) continue;
+
     questions.push({
       id: `stations-special-${s.num}`,
       category: "stations",
@@ -130,7 +167,7 @@ function generateStationQuestions(): Question[] {
 function generateTruckQuestions(): Question[] {
   const questions: Question[] = [];
   const stationPool = truckCompanies.map((t) => `Station ${t.station}`);
-  const colorPool = Object.values(truckToolColors);
+  const colorPoolNorm = Object.values(truckToolColors).map(toTitleCase);
 
   for (const tc of truckCompanies) {
     // Crew size
@@ -156,15 +193,16 @@ function generateTruckQuestions(): Question[] {
       trackSlug: "ladders",
     });
 
-    // Tool color
-    const color = truckToolColors[truckToFull(tc.truck)];
-    if (color) {
+    // Tool color (normalize from ALL CAPS to title case)
+    const colorRaw = truckToolColors[truckToFull(tc.truck)];
+    if (colorRaw) {
+      const color = toTitleCase(colorRaw);
       questions.push({
         id: `trucks-color-${tc.truck.toLowerCase()}`,
         category: "trucks",
         question: `What color are ${tc.truck}'s tools?`,
         answer: color,
-        wrongAnswers: pickDistractors(colorPool, color),
+        wrongAnswers: pickDistractors(colorPoolNorm, color),
         trackSlug: "ladders",
       });
     }
@@ -190,6 +228,22 @@ function generateTruckQuestions(): Question[] {
       truckCrewSizes.fourMembers.slice(0, 3).join(", "),
       `${truckCrewSizes.fiveMembers[0]}, ${truckCrewSizes.fourMembers[0]}, ${truckCrewSizes.fourMembers[1]}`,
       `${truckCrewSizes.fiveMembers[0]}, ${truckCrewSizes.fiveMembers[1]}, ${truckCrewSizes.fourMembers[0]}`,
+    ],
+    trackSlug: "ladders",
+  });
+
+  // ALS trucks composite question
+  const alsTrucks = truckCompanies.filter((t) => t.medical === "ALS");
+  const blsTrucks = truckCompanies.filter((t) => t.medical === "BLS");
+  questions.push({
+    id: "trucks-als-composite",
+    category: "trucks",
+    question: "Which trucks are ALS?",
+    answer: alsTrucks.map((t) => t.truck).join(", "),
+    wrongAnswers: [
+      `${alsTrucks[0].truck}, ${blsTrucks[0].truck}`,
+      `${blsTrucks[0].truck}, ${blsTrucks[1].truck}`,
+      `${alsTrucks[0].truck}, ${blsTrucks[2].truck}`,
     ],
     trackSlug: "ladders",
   });
