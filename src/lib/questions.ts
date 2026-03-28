@@ -10,6 +10,7 @@ export type StudyMode = "flashcard" | "multiple-choice";
 export interface Question {
   id: string;
   category: QuestionCategory;
+  subtopic: string;
   question: string;
   answer: string;
   wrongAnswers: string[];
@@ -83,20 +84,20 @@ function generateStationQuestions(): Question[] {
   const doubleHouseStrs = doubleHouseNums.map((n) => `Station ${n}`);
 
   for (const s of stations) {
-    // Address question
     questions.push({
       id: `stations-addr-${s.num}`,
       category: "stations",
+      subtopic: "Addresses",
       question: `What is the address of Station ${s.num}?`,
       answer: s.addr,
       wrongAnswers: pickDistractors(addrPool, s.addr),
       trackSlug: "stations-battalions",
     });
 
-    // Battalion question
     questions.push({
       id: `stations-bn-${s.num}`,
       category: "stations",
+      subtopic: "Battalions",
       question: `Station ${s.num} belongs to which battalion?`,
       answer: `Battalion ${s.bn}`,
       wrongAnswers: pickDistractors(bnPool, `Battalion ${s.bn}`),
@@ -104,11 +105,12 @@ function generateStationQuestions(): Question[] {
     });
   }
 
-  // Double house questions (replace 26 individual house-type questions with targeted ones)
+  // Double house questions
   for (const s of stations.filter((s) => s.type === "Double")) {
     questions.push({
       id: `stations-double-${s.num}`,
       category: "stations",
+      subtopic: "Double Houses",
       question: `Is Station ${s.num} a double house?`,
       answer: "Yes",
       wrongAnswers: ["No"],
@@ -116,14 +118,13 @@ function generateStationQuestions(): Question[] {
     });
   }
 
-  // "Which of these is a double house?" for a few single-house stations
   const singleStations = stations.filter((s) => s.type === "Single");
   for (let i = 0; i < 3 && i < singleStations.length; i++) {
-    const s = singleStations[i];
     const correctDouble = doubleHouseNums[i % doubleHouseNums.length];
     questions.push({
       id: `stations-which-double-${i}`,
       category: "stations",
+      subtopic: "Double Houses",
       question: "Which of these is a double house?",
       answer: `Station ${correctDouble}`,
       wrongAnswers: pickDistractors(
@@ -134,7 +135,7 @@ function generateStationQuestions(): Question[] {
     });
   }
 
-  // Special assignment questions (only notable ones)
+  // Special assignment questions
   const specialStations = stations.filter(
     (s) =>
       s.special.length > 0 &&
@@ -146,14 +147,12 @@ function generateStationQuestions(): Question[] {
 
   for (const s of specialStations) {
     const mainSpecial = s.special[0];
-
-    // Skip Type III Wildland for Station 7 — Station 17 also has it, making
-    // the single-answer format ambiguous. Station 17 covers it via "Bn 4 HQ".
     if (mainSpecial === "Type III Wildland" && s.num === 7) continue;
 
     questions.push({
       id: `stations-special-${s.num}`,
       category: "stations",
+      subtopic: "Specials",
       question: `Which station houses ${mainSpecial}?`,
       answer: `Station ${s.num}`,
       wrongAnswers: pickDistractors(stationNumPool, `Station ${s.num}`),
@@ -170,10 +169,10 @@ function generateTruckQuestions(): Question[] {
   const colorPoolNorm = Object.values(truckToolColors).map(toTitleCase);
 
   for (const tc of truckCompanies) {
-    // Crew size
     questions.push({
       id: `trucks-crew-${tc.truck.toLowerCase()}`,
       category: "trucks",
+      subtopic: "Crew Sizes",
       question: `How many crew members are on ${tc.truck}?`,
       answer: `${tc.crew} members`,
       wrongAnswers: pickDistractors(
@@ -183,23 +182,23 @@ function generateTruckQuestions(): Question[] {
       trackSlug: "ladders",
     });
 
-    // ALS/BLS
     questions.push({
       id: `trucks-medical-${tc.truck.toLowerCase()}`,
       category: "trucks",
+      subtopic: "ALS / BLS",
       question: `${tc.truck} is ALS or BLS?`,
       answer: tc.medical,
       wrongAnswers: pickDistractors(["ALS", "BLS", "ILS"], tc.medical),
       trackSlug: "ladders",
     });
 
-    // Tool color (normalize from ALL CAPS to title case)
     const colorRaw = truckToolColors[truckToFull(tc.truck)];
     if (colorRaw) {
       const color = toTitleCase(colorRaw);
       questions.push({
         id: `trucks-color-${tc.truck.toLowerCase()}`,
         category: "trucks",
+        subtopic: "Tool Colors",
         question: `What color are ${tc.truck}'s tools?`,
         answer: color,
         wrongAnswers: pickDistractors(colorPoolNorm, color),
@@ -207,10 +206,10 @@ function generateTruckQuestions(): Question[] {
       });
     }
 
-    // Station assignment
     questions.push({
       id: `trucks-station-${tc.truck.toLowerCase()}`,
       category: "trucks",
+      subtopic: "Stations",
       question: `${tc.truck} is housed at which station?`,
       answer: `Station ${tc.station}`,
       wrongAnswers: pickDistractors(stationPool, `Station ${tc.station}`),
@@ -218,10 +217,10 @@ function generateTruckQuestions(): Question[] {
     });
   }
 
-  // 5-member trucks composite question
   questions.push({
     id: "trucks-five-member",
     category: "trucks",
+    subtopic: "Crew Sizes",
     question: "Which trucks have 5-member crews?",
     answer: truckCrewSizes.fiveMembers.join(", "),
     wrongAnswers: [
@@ -232,12 +231,12 @@ function generateTruckQuestions(): Question[] {
     trackSlug: "ladders",
   });
 
-  // ALS trucks composite question
   const alsTrucks = truckCompanies.filter((t) => t.medical === "ALS");
   const blsTrucks = truckCompanies.filter((t) => t.medical === "BLS");
   questions.push({
     id: "trucks-als-composite",
     category: "trucks",
+    subtopic: "ALS / BLS",
     question: "Which trucks are ALS?",
     answer: alsTrucks.map((t) => t.truck).join(", "),
     wrongAnswers: [
@@ -261,10 +260,10 @@ function generateToolQuestions(): Question[] {
   );
 
   for (const tool of toolsWithImages) {
-    // Name from image
     questions.push({
       id: `tools-name-${tool.name.toLowerCase().replace(/[^a-z0-9]/g, "-")}`,
       category: "tools",
+      subtopic: "Identify",
       question: "Name this tool:",
       answer: tool.name,
       wrongAnswers: pickDistractors(allToolNames, tool.name),
@@ -272,11 +271,11 @@ function generateToolQuestions(): Question[] {
       image: handToolImages[tool.name],
     });
 
-    // Category question
     const catLabel = categoryLabels[tool.category] || tool.category;
     questions.push({
       id: `tools-cat-${tool.name.toLowerCase().replace(/[^a-z0-9]/g, "-")}`,
       category: "tools",
+      subtopic: "Categories",
       question: `"${tool.name}" belongs to which category?`,
       answer: catLabel,
       wrongAnswers: pickDistractors(allCategoryLabels, catLabel),
@@ -284,7 +283,6 @@ function generateToolQuestions(): Question[] {
     });
   }
 
-  // AKA questions (only for tools that have aka)
   const toolsWithAka = handTools.filter((t) => t.aka && handToolImages[t.name]);
   const akaPool = toolsWithAka.map((t) => t.aka!);
 
@@ -292,6 +290,7 @@ function generateToolQuestions(): Question[] {
     questions.push({
       id: `tools-aka-${tool.name.toLowerCase().replace(/[^a-z0-9]/g, "-")}`,
       category: "tools",
+      subtopic: "Aliases",
       question: `What is another name for "${tool.name}"?`,
       answer: tool.aka!,
       wrongAnswers: pickDistractors(akaPool, tool.aka!),
@@ -312,6 +311,7 @@ const allQuestionGenerators: Record<QuestionCategory, () => Question[]> = {
 
 export function generateQuestions(opts?: {
   category?: QuestionCategory | "mixed";
+  subtopics?: string[];
   trackSlug?: string;
   count?: number;
 }): Question[] {
@@ -326,6 +326,11 @@ export function generateQuestions(opts?: {
     ];
   } else {
     pool = allQuestionGenerators[category]();
+  }
+
+  // Filter by subtopics if specified
+  if (opts?.subtopics && opts.subtopics.length > 0) {
+    pool = pool.filter((q) => opts.subtopics!.includes(q.subtopic));
   }
 
   // Filter by track if specified
@@ -346,6 +351,17 @@ export function generateQuestions(opts?: {
 
 export function shuffleAnswers(q: Question): string[] {
   return shuffle([q.answer, ...q.wrongAnswers]);
+}
+
+export function getSubtopics(
+  category: QuestionCategory
+): { value: string; count: number }[] {
+  const pool = allQuestionGenerators[category]();
+  const counts: Record<string, number> = {};
+  for (const q of pool) {
+    counts[q.subtopic] = (counts[q.subtopic] || 0) + 1;
+  }
+  return Object.entries(counts).map(([value, count]) => ({ value, count }));
 }
 
 export function getAllCategories(): {

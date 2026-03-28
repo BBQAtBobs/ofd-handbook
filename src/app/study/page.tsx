@@ -9,6 +9,7 @@ import SessionResults from "@/components/study/SessionResults";
 import {
   generateQuestions,
   getAllCategories,
+  getSubtopics,
   type Question,
   type QuestionCategory,
   type StudyMode,
@@ -72,6 +73,7 @@ const CATEGORY_CONFIG: Record<
 export default function StudyPage() {
   const [phase, setPhase] = useState<Phase>("setup");
   const [category, setCategory] = useState<QuestionCategory | "mixed">("stations");
+  const [selectedSubtopics, setSelectedSubtopics] = useState<string[]>([]);
   const [mode, setMode] = useState<StudyMode>("flashcard");
   const [count, setCount] = useState<number | "all">(10);
   const [questions, setQuestions] = useState<Question[]>([]);
@@ -83,6 +85,63 @@ export default function StudyPage() {
   const categories = getAllCategories();
   const totalMixed = categories.reduce((sum, c) => sum + c.count, 0);
 
+  // Get subtopics for the selected category
+  const availableSubtopics =
+    category !== "mixed" ? getSubtopics(category) : [];
+  const allSubtopicValues = availableSubtopics.map((s) => s.value);
+
+  // When category changes, reset subtopics to "all selected"
+  const handleCategoryChange = useCallback(
+    (cat: QuestionCategory | "mixed") => {
+      setCategory(cat);
+      setSelectedSubtopics([]); // empty = all
+    },
+    []
+  );
+
+  // Subtopic toggle logic: empty array means "all selected"
+  const isAllSubtopicsSelected =
+    selectedSubtopics.length === 0 ||
+    selectedSubtopics.length === allSubtopicValues.length;
+
+  const toggleSubtopic = useCallback(
+    (subtopic: string) => {
+      setSelectedSubtopics((prev) => {
+        // If currently "all" (empty), focus on just this subtopic
+        if (prev.length === 0) {
+          return [subtopic];
+        }
+        // If this was the only one selected, go back to all
+        if (prev.length === 1 && prev[0] === subtopic) {
+          return [];
+        }
+        // Toggle normally
+        if (prev.includes(subtopic)) {
+          return prev.filter((s) => s !== subtopic);
+        }
+        // If adding this would select all, reset to empty (= all)
+        const next = [...prev, subtopic];
+        if (next.length === allSubtopicValues.length) return [];
+        return next;
+      });
+    },
+    [allSubtopicValues]
+  );
+
+  const isSubtopicSelected = (subtopic: string) =>
+    selectedSubtopics.length === 0 || selectedSubtopics.includes(subtopic);
+
+  // Count questions for current selection
+  const selectedQuestionCount =
+    category === "mixed"
+      ? totalMixed
+      : isAllSubtopicsSelected
+        ? categories.find((c) => c.value === category)?.count ?? 0
+        : generateQuestions({
+            category,
+            subtopics: selectedSubtopics,
+          }).length;
+
   // Load last scores from localStorage
   useEffect(() => {
     setLastScores(getLastScores());
@@ -91,13 +150,17 @@ export default function StudyPage() {
   const startSession = useCallback(() => {
     const q = generateQuestions({
       category: category === "mixed" ? "mixed" : category,
+      subtopics:
+        category !== "mixed" && !isAllSubtopicsSelected
+          ? selectedSubtopics
+          : undefined,
       count: count === "all" ? undefined : count,
     });
     if (q.length === 0) return;
     setQuestions(q);
     setResults(null);
     setPhase("session");
-  }, [category, count]);
+  }, [category, selectedSubtopics, isAllSubtopicsSelected, count]);
 
   const handleComplete = useCallback((result: SessionResult) => {
     setResults(result);
@@ -158,7 +221,7 @@ export default function StudyPage() {
                 return (
                   <button
                     key={cat.value}
-                    onClick={() => setCategory(cat.value)}
+                    onClick={() => handleCategoryChange(cat.value)}
                     className={`relative p-[1.125rem] rounded-xl bg-bg-card border-2 cursor-pointer transition-all duration-200 text-left select-none hover:-translate-y-px hover:shadow-[0_4px_12px_rgba(0,0,0,0.04)] active:translate-y-0 active:scale-[0.98] ${
                       isSelected
                         ? "-translate-y-px shadow-[0_4px_16px_rgba(0,0,0,0.06)]"
@@ -198,6 +261,53 @@ export default function StudyPage() {
                 );
               })}
             </div>
+
+            {/* Subtopics */}
+            {category !== "mixed" && availableSubtopics.length > 1 && (
+              <>
+                <div className="font-heading text-[0.65rem] font-bold uppercase tracking-[0.15em] text-muted mb-3 mt-6">
+                  Focus
+                </div>
+                <div className="flex flex-wrap gap-2">
+                  <button
+                    onClick={() => setSelectedSubtopics([])}
+                    className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-all duration-150 select-none border ${
+                      isAllSubtopicsSelected
+                        ? "text-white border-transparent shadow-sm"
+                        : "bg-bg-card border-border-light text-secondary hover:border-border hover:text-primary"
+                    }`}
+                    style={
+                      isAllSubtopicsSelected
+                        ? { backgroundColor: CATEGORY_CONFIG[category].color }
+                        : undefined
+                    }
+                  >
+                    All ({categories.find((c) => c.value === category)?.count})
+                  </button>
+                  {availableSubtopics.map((sub) => {
+                    const active = isSubtopicSelected(sub.value) && !isAllSubtopicsSelected;
+                    return (
+                      <button
+                        key={sub.value}
+                        onClick={() => toggleSubtopic(sub.value)}
+                        className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-all duration-150 select-none border ${
+                          active
+                            ? "text-white border-transparent shadow-sm"
+                            : "bg-bg-card border-border-light text-secondary hover:border-border hover:text-primary"
+                        }`}
+                        style={
+                          active
+                            ? { backgroundColor: CATEGORY_CONFIG[category].color }
+                            : undefined
+                        }
+                      >
+                        {sub.value} ({sub.count})
+                      </button>
+                    );
+                  })}
+                </div>
+              </>
+            )}
 
             {/* Mode */}
             <div className="font-heading text-[0.65rem] font-bold uppercase tracking-[0.15em] text-muted mb-3 mt-8">
