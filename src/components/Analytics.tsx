@@ -34,6 +34,18 @@ function PostHogInit({ children }: { children: React.ReactNode }) {
       persistence: "localStorage",
       person_profiles: "always",
       opt_out_capturing_by_default: isOptedOut,
+      // Session replay — records visitor sessions as replayable videos
+      disable_session_recording: isOptedOut,
+      session_recording: {
+        // Mask all text input fields for privacy
+        maskAllInputs: true,
+      },
+      // Autocapture clicks, inputs, and form submissions
+      autocapture: !isOptedOut,
+      // Capture performance data (page load times, resource timing)
+      capture_performance: !isOptedOut,
+      // Enable heatmaps (click maps on your pages)
+      enable_heatmaps: !isOptedOut,
     });
 
     // Also call the PostHog opt-out API to be thorough
