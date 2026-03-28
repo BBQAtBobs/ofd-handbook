@@ -32,6 +32,7 @@ function PostHogInit({ children }: { children: React.ReactNode }) {
       capture_pageview: !isOptedOut,
       capture_pageleave: !isOptedOut,
       persistence: "localStorage",
+      person_profiles: "always",
       opt_out_capturing_by_default: isOptedOut,
     });
 
