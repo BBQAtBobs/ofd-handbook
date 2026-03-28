@@ -3,8 +3,8 @@ import Image from "next/image";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import { stations } from "@/data/stations";
-import { handTools } from "@/data/hand-tools";
 import { learningTracks } from "@/data/learning-tracks";
+import { buildSearchIndex } from "@/lib/search-index";
 
 const entryPoints = [
   {
@@ -129,10 +129,11 @@ const colorMap: Record<string, { bg: string; text: string; border: string }> = {
   },
 };
 
+const topicCount = Math.floor(buildSearchIndex().length / 10) * 10;
 const stats = [
   { value: String(stations.length), label: "Stations" },
   { value: "3", label: "Battalions" },
-  { value: String(handTools.length), label: "Hand Tools" },
+  { value: `${topicCount}+`, label: "Topics" },
   { value: String(learningTracks.length), label: "Learning Tracks" },
 ];
 
