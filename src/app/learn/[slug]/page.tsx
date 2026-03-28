@@ -3,6 +3,7 @@ import Link from "next/link";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import TrackPageLayout from "@/components/TrackPageLayout";
+import TrackQuiz from "@/components/study/TrackQuiz";
 import { learningTracks } from "@/data/learning-tracks";
 import { getTrackContent, ContentBlock } from "@/data/track-content";
 
@@ -322,6 +323,9 @@ export default async function TrackPage({
               <div />
             )}
           </div>
+
+          {/* Quiz */}
+          <TrackQuiz trackSlug={slug} accentColor={hex} />
         </TrackPageLayout>
       </main>
       <Footer />

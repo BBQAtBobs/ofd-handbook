@@ -9,6 +9,7 @@ const navLinks = [
   { href: "/stations", label: "Stations" },
   { href: "/quick-ref", label: "Quick Ref" },
   { href: "/equipment", label: "Equipment" },
+  { href: "/study", label: "Study" },
 ];
 
 export default function Nav() {
